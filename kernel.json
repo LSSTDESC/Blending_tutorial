@@ -1,0 +1,10 @@
+{
+ "display_name": "lsst2",
+ "language": "python",
+ "argv": [
+  "$REPO_PATH/lsst-kernel2.sh",
+  "-f",
+  "{connection_file}"
+ ]
+}
+
