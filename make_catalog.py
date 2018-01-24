@@ -1,4 +1,5 @@
 from astropy.table import Table
+import numpy as np
 """Script creates pair of galaxies in the format of catsim galaxy catalog.
 The central galaxy is picked at random form the OneDegSq.fits catsim catalog.
 The size , location and ellipticity of the second galaxy can be manually
@@ -27,14 +28,24 @@ def get_hlr(a, b):
     return hlr
 
 
+def update_mag(cat, Args):
+    """Changes the magnitude in ugrizy band based on how the flux of second
+    galaxy changes.
+    """
+    bands = ['u', 'g', 'r', 'i', 'z', 'y']
+    for band in bands:
+        cat[band + '_ab'][1] += -2.5 * np.log10(Args.flux_frac)
+
+
 def get_second_galaxy(Args, cat):
     """Assigns center and bulge, dic sizes and flux of the second galaxy
     tp the input catalog
     """
     cat['ra'][1] = cat[0]['ra'] + Args.x0 * 0.2 / 3600.
     cat['dec'][1] = cat[0]['dec'] + Args.y0 * 0.2 / 3600.
-    cat['fluxnorm_bulge'][1] = cat['fluxnorm_bulge'][1] * Args.bflux_frac
-    cat['fluxnorm_disk'][1] = cat['fluxnorm_disk'][1] * Args.dflux_frac
+    cat['fluxnorm_bulge'][1] = cat['fluxnorm_bulge'][1] * Args.flux_frac
+    cat['fluxnorm_disk'][1] = cat['fluxnorm_disk'][1] * Args.flux_frac
+    update_mag(cat, Args)
     # From ellipticity and HLR compute a, b
     hlr = get_hlr(cat['a_b'][0], cat['b_b'][0])
     cat['a_b'][1], cat['b_b'][1] = get_a_b(Args.b_e, hlr * Args.bhlr_frac)
@@ -58,12 +69,9 @@ def main(Args):
 if __name__ == "__main__":
     from argparse import ArgumentParser
     parser = ArgumentParser()
-    parser.add_argument('--bflux_frac', default=1., type=float,
-                        help="Flux of second galaxy bulge as a fraction of \
-                        central galaxy bulge flux [Default:1]")
-    parser.add_argument('--dflux_frac', default=1., type=float,
-                        help="Flux of second galaxy disk as a fraction of \
-                        central galaxy disk flux [Default:1]")
+    parser.add_argument('--flux_frac', default=1., type=float,
+                        help="Flux of second galaxy as a fraction of \
+                        central galaxy flux [Default:1]")
     parser.add_argument('--bhlr_frac', default=1., type=float,
                         help="HLR of second galaxy bulge as a fraction of \
                         central galaxy bulge HLR [Default:1]")
