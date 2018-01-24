@@ -78,15 +78,15 @@ if __name__ == "__main__":
     parser.add_argument('--dhlr_frac', default=1., type=float,
                         help="HLR of second galaxy disk as a fraction of \
                         central galaxy disk HLR [Default:1]")
-    parser.add_argument('--x0', default=6., type=float,
+    parser.add_argument('--x0', default=10., type=float,
                         help="x coordinate of center of second galaxy in pixels. \
-                        Center of central galaxy is (0,0).[Default:6]")
-    parser.add_argument('--y0', default=6., type=float,
+                        Center of central galaxy is (0,0).[Default:10]")
+    parser.add_argument('--y0', default=10., type=float,
                         help="y coordinate of center of second galaxy in pixels. \
-                        Center of central galaxy is (0,0). [Default:6]")
+                        Center of central galaxy is (0,0). [Default:10]")
     parser.add_argument('--p_angle', default=0., type=float,
                         help="Position of center of second galaxy in degrees \
-                        [Default:20]")
+                        [Default:0]")
     parser.add_argument('--b_e', default=0., type=float,
                         help="Ellipticity (e) second galaxy bulge \
                         [Default:0.]")
