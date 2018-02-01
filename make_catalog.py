@@ -8,9 +8,10 @@ The total field is assumed to be centered at the central galaxy.
 """
 
 
-def get_galaxies():
+def get_galaxies(path):
     """Returns galaxy pairs fom the template catsim catalog"""
-    cat = Table.read('data/gal_pair_temp_catalog.fits', format='fits')
+    cat = Table.read(path + 'gal_pair_temp_catalog.fits',
+                     format='fits')
     return cat
 
 
@@ -58,12 +59,15 @@ def get_second_galaxy(Args, cat):
 
 def main(Args):
     # Get a catlog entry from One square degree catalog
-    catalog = get_galaxies()
+    catalog = get_galaxies(Args.path)
     # Add input properties of second galaxy to the catalog
     get_second_galaxy(Args, catalog)
-    catalog.write('data/gal_pair_catalog.fits', format='fits', overwrite=True)
-    catalog[0:1].write('data/gal1_catalog.fits', format='fits', overwrite=True)
-    catalog[1:2].write('data/gal2_catalog.fits', format='fits', overwrite=True)
+    catalog.write(Args.path + 'gal_pair_catalog.fits',
+                  format='fits', overwrite=True)
+    catalog[0:1].write(Args.path + 'gal1_catalog.fits',
+                       format='fits', overwrite=True)
+    catalog[1:2].write(Args.path + 'gal2_catalog.fits',
+                       format='fits', overwrite=True)
 
 
 if __name__ == "__main__":
@@ -93,5 +97,8 @@ if __name__ == "__main__":
     parser.add_argument('--d_e', default=0., type=float,
                         help="Ellipticity (e) second galaxy disk \
                         [Default:0.]")
+    parser.add_argument('--path', default="data/",
+                        help="Path to directory where catalog is to be saved \
+                        [Default:data/]")
     args = parser.parse_args()
     main(args)
