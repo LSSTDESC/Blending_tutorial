@@ -1,23 +1,27 @@
 # Blending tutorial (SLAC February 2018)
 Repo containing the tutorial for the Blending Task Force session at the LSST DESC collaboration meeting at SLAC on February 2018.
 
-## Generate your simulated image with WeakLensingDeblending
+# Quick start
 
-1. Using the [WeakLensingDeblending package](https://github.com/LSSTDESC/WeakLensingDeblending/) (WLD) you can generate your own LSST-like images. To do that, you can download the CatSim instance catalog [here](ftp://ftp.slac.stanford.edu/groups/desc/WL/OneDegSq.fits.gz). Once you have the file you can go to the folder where you have the WeakLensingDeblending package and run `./simulate.py --survey-name LSST --filter-band i --catalog-name INPUT_CATALOG --output-name OUTPUT_CATALOG`. You can test it using the catalog at `/global/projecta/projectdirs/lsst/groups/WL/projects/wl-btf/OneDegSq.fits`. This will generate a LSST 10-year i-band like image and a catalog containing true shapes, positions and fluxes of galaxies, and Fisher-matrix predictions for their uncertainties (it also has the capability to produce predictions for the bias). If you are not interested in the individual, un-blended postage stamps you can add the option `--no-stamps` and it will produce a more lightweight output. You can see more options by executing `./simulate.py --help`.
+1. Please if you don't have a NERSC account or don't remember how to access NERSC follow the instructions [here](https://confluence.slac.stanford.edu/display/LSSTDESC/Getting+Started+at+NERSC)
+
+2. Clone this repo into your favorite location on NERSC
 
 ## Setup the DM stack
-1. The first step is to configure a custom kernel at jupyter-dev (NERSC). More info [here](https://github.com/LSSTDESC/Monitor/blob/master/doc/jupyter-dev.md). First create a new kernel with the command `ipython kernel install --user --name KERNEL_NAME`. This will generate a directory `~/.local/share/jupyter/kernels/KERNEL_NAME`. I chose `KERNEL_NAME=lsst2`. This directory contains a file called `kernel.json` that we will modify in step 3.
 
-2. Copy the script `lsst-kernel2.sh` from this repo in your favorite location and change the permissions with `chmod ug+rx lsst-kernel2.sh`
+3. The next step is to configure a custom kernel at jupyter-dev (NERSC). More info [here](https://github.com/LSSTDESC/Monitor/blob/master/doc/jupyter-dev.md). First create a new kernel with the command `ipython kernel install --user --name KERNEL_NAME`. This will generate a directory `~/.local/share/jupyter/kernels/KERNEL_NAME`. We chose `KERNEL_NAME=lsst2`. This directory contains a file called `kernel.json` that we will modify in a different step.
 
-3. Modify the `kernel.json` file to link to `lsst-kernel2.sh` (check the file `kernel.json` to see an example).
+4. Copy the script `lsst-kernel2.sh` from this repo in your favorite location and change the permissions with `chmod ug+rx lsst-kernel2.sh`
 
-4. Start your session in https://jupyter-dev.nersc.gov and you should be able to open and execute the notebook. 
+4. Modify the `kernel.json` file to link to `lsst-kernel2.sh` (check the file `kernel.json` to see an example).
 
-## Run the notebook
+5. Start your session in https://jupyter-dev.nersc.gov and you should be able to open and execute the notebooks in this repo. 
 
-1. Just point to the path where you have the image generated with WLD, set a seed for the noise and save the results in a FITS file if you want to.
+## Run the analysis notebooks
 
-## Analyze the results and compare with the true catalog
+You can find two different tutorial notebooks in this repository. In `Two_galaxy_blends.ipynb` you can create simple two-galaxy blends with the DESC Weak Lensing Deblending package (WLD), analyze the images with the LSST DM stack, and then develop metrics on the output. If you are not able to install the LSST DM stack, you can run an example analysis on a pre-generated catalog using `Two_galaxy_blends_catalog.ipynb`.
 
-One of the advantages of this approach is that you have a truth-table to compare with. Perform your favorite analysis to test the effects of blending. You can find the outputs of WLD at `/global/projecta/projectdirs/lsst/groups/WL/projects/wl-btf/LSST_i_lite.fits` and a processed catalog by the DM stack at the same folder in the file `LSST_i_DM.fits.gz` and perform your favorite analysis. You can also check an example in `Example_analysis.ipynb` 
+The second tutorial is based on generating and analyzing an LSST 10-year depth i-band like image of a chip (4096 x 4096 pixels). You can also use the pre-generated catalog or use WLD to generate your own. Then you can run the DM-stack on the image using the notebook `Process.ipynb`. Finally, you can run some analysis in these catalogs, an example is made on `Example_analysis.ipynb`. You can use our pre-generated WLD and DM catalogs and run this notebook.
+
+All our data products can be found at NERSC in `/global/projecta/projectdirs/lsst/groups/WL/projects/wl-btf`.
+
