@@ -2,7 +2,7 @@
  "display_name": "lsst2",
  "language": "python",
  "argv": [
-  "lsst-kernel2.sh",
+  "/global/projecta/projectdirs/lsst/groups/WL/projects/wl-btf/lsst-kernel2.sh",
   "-f",
   "{connection_file}"
  ]
