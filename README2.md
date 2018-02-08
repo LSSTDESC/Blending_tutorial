@@ -29,15 +29,15 @@ Navigate to your `Blending_tutorial` directory in the jupyter browser, and click
 
 ## 4: Analyze Realistic Blended Galaxies
 
-This step can be run on your laptop by downloading files saved from the earlier steps.
+This step can either be run at NERSC or on your laptop by downloading files saved from the earlier steps.
 
-...
+Open the `Example_analysis.ipynb` notebook to launch this tutorial.
 
 ## 5: Analyze Isolated Blended Galaxy Pairs
 
-This step can be run on your laptop by downloading files saved from the earlier steps.
+This step can either be run at NERSC or on your laptop by downloading files saved from the earlier steps.
 
-...
+Open the `Two_galaxy_blends_catalog.ipynb` notebook to launch this tutorial.
 
 ### Version History
 
