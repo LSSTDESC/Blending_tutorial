@@ -29,13 +29,13 @@ Navigate to your `Blending_tutorial` directory in the jupyter browser, and click
 
 ## 4: Analyze Realistic Blended Galaxies
 
-This step can be run on your laptop by downloding files saved from the earlier steps.
+This step can be run on your laptop by downloading files saved from the earlier steps.
 
 ...
 
 ## 5: Analyze Isolated Blended Galaxy Pairs
 
-This step can be run on your laptop by downloding files saved from the earlier steps.
+This step can be run on your laptop by downloading files saved from the earlier steps.
 
 ...
 
