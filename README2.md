@@ -3,7 +3,7 @@
 This tutorial consists of several related self-study activities. Refer to the numbered steps below for the tutorial(s)
 you are interested in following.
 
-![Tutorial Overview](./Overview.png =856x1026)
+<img src="Overview.png" data-canonical-src="Overview.png" width="856" height="1026" />
 
 ## 0: Prepare to Run at NERSC
 
