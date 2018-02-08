@@ -13,7 +13,7 @@ Tutorials intended to be run via a jupyter session at NERSC require some initial
 
 Since this tutorial is intended to be run at NERSC, you will need to complete Step-0 first.
 
-...
+Instructions for generating the image and catalog used in Step-2 are [here](WLD.md).  For a general tutorial introduction to the WeakLensingDeblending package, start [here](http://weaklensingdeblending.readthedocs.io/en/latest/quickstart.html).
 
 ## 2: Process Realistic Galaxies with the DM Pipeline
 
