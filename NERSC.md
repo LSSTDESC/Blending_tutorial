@@ -24,12 +24,11 @@ Initialize a new jupyter kernel:
 ```
 ipython kernel install --user --name lsst2
 ```
-Customize the new kernel (paths assume that you are in the same directory where you ran `git clone...` above):
+Customize the new kernel:
 ```
 cp Blending_tutorial/kernel.json ~/.local/share/jupyter/kernels/lsst2/
-cp Blending_tutorial/lsst-kernel2.sh ~/.local/share/jupyter/kernels/lsst2/
-chmod ug+rx ~/.local/share/jupyter/kernels/lsst2/lsst-kernel2.sh
 ```
+
 ## Launch Jupyter at NERSC
 
 Once the two steps above are completed, you can launch a jupyter kernel at NERSC directly from your browser by visiting
